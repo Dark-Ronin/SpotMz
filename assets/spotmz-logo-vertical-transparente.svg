@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Icon mark large centered -->
+  <rect x="56" y="16" width="88" height="88" rx="18" fill="#E24B4A"/>
+  <circle cx="100" cy="60" r="15" fill="#ffffff"/>
+  <circle cx="100" cy="60" r="6" fill="#E24B4A"/>
+
+  <!-- Wordmark stacked -->
+  <text x="100" y="136"
+    text-anchor="middle"
+    font-family="'Syne', 'Arial Black', sans-serif"
+    font-weight="800"
+    font-size="38"
+    letter-spacing="-1"
+    fill="#1a1a1a">Spot</text>
+  <text x="100" y="174"
+    text-anchor="middle"
+    font-family="'Syne', 'Arial Black', sans-serif"
+    font-weight="800"
+    font-size="38"
+    letter-spacing="-1"
+    fill="#E24B4A">.mz</text>
+</svg>

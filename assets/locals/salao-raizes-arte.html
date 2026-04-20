@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raízes & Arte · Salão de Tranças · Maputo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9963A;--gold-light:#E8C06E;--gold-dark:#8B6520;
+  --earth:#3D2B1F;--cream:#FAF6F0;--terracotta:#C4622D;
+  --sage:#4A6741;--warm-white:#FDF9F4;
+}
+body{font-family:'Inter',sans-serif;background:var(--warm-white);color:var(--earth)}
+.kente-border{height:6px;background:repeating-linear-gradient(90deg,#C9963A 0,#C9963A 16px,#3D2B1F 16px,#3D2B1F 24px,#C4622D 24px,#C4622D 40px,#3D2B1F 40px,#3D2B1F 48px)}
+.hero{background:var(--earth);position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column}
+.hero-pattern{position:absolute;inset:0;opacity:0.07;background-image:repeating-linear-gradient(45deg,#C9963A 0,#C9963A 1px,transparent 0,transparent 50%),repeating-linear-gradient(-45deg,#C9963A 0,#C9963A 1px,transparent 0,transparent 50%);background-size:20px 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;position:relative;z-index:2}
+.logo{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1.4rem;font-weight:700}
+.logo span{color:#fff;font-weight:400;font-size:0.7rem;display:block;letter-spacing:0.15em;text-transform:uppercase}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.75);font-size:0.8rem;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold-light)}
+.hero-content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 2rem 2.5rem;position:relative;z-index:2;text-align:center}
+.hero-badge{background:rgba(201,150,58,0.2);border:1px solid rgba(201,150,58,0.4);color:var(--gold-light);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:1.2rem;display:inline-block}
+.hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:2.6rem;font-weight:700;line-height:1.2;margin-bottom:0.8rem;max-width:480px}
+.hero h1 em{color:var(--gold-light);font-style:normal}
+.hero p{color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;max-width:380px;margin-bottom:1.8rem}
+.hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{background:var(--gold);color:var(--earth);font-weight:500;font-size:0.85rem;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;letter-spacing:0.05em}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;color:#fff;font-size:0.85rem;padding:11px 24px;border-radius:4px;border:1px solid rgba(255,255,255,0.35);cursor:pointer;letter-spacing:0.05em}
+section{padding:3rem 2rem}
+.section-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-dark);font-weight:500;margin-bottom:0.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--earth);font-weight:600;margin-bottom:0.5rem}
+.section-sub{font-size:0.88rem;color:rgba(61,43,31,0.6);line-height:1.7;margin-bottom:2rem}
+.accent-line{width:40px;height:2px;background:var(--gold);margin:0 auto 1.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
+.service-card{background:#fff;border:0.5px solid rgba(61,43,31,0.12);border-radius:12px;padding:1.2rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.service-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.service-card.selected{border-color:var(--gold);background:#FEFAF3}
+.service-card.selected::after{content:'';position:absolute;top:8px;right:8px;width:10px;height:10px;background:var(--gold);border-radius:50%}
+.service-icon{font-size:1.8rem;margin-bottom:0.6rem}
+.service-name{font-weight:500;font-size:0.88rem;color:var(--earth);margin-bottom:4px}
+.service-price{font-size:0.78rem;color:var(--gold-dark);font-weight:500}
+.service-time{font-size:0.72rem;color:rgba(61,43,31,0.5);margin-top:2px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,150,58,0.3),transparent);margin:0 2rem}
+.booking-section{background:var(--cream)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:0.75rem;font-weight:500;color:var(--earth);letter-spacing:0.05em;text-transform:uppercase}
+.form-group input,.form-group select{background:#fff;border:1px solid rgba(61,43,31,0.18);border-radius:6px;padding:10px 14px;font-size:0.88rem;color:var(--earth);outline:none;font-family:'Inter',sans-serif}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:0.5rem}
+.time-slot{background:#fff;border:1px solid rgba(61,43,31,0.15);border-radius:6px;padding:8px 4px;text-align:center;font-size:0.78rem;color:var(--earth);cursor:pointer;transition:all 0.2s}
+.time-slot:hover{border-color:var(--gold)}
+.time-slot.taken{background:rgba(61,43,31,0.05);color:rgba(61,43,31,0.3);cursor:not-allowed}
+.time-slot.selected{background:var(--gold);color:#fff;border-color:var(--gold);font-weight:500}
+.stylists{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.stylist-card{border:1px solid rgba(61,43,31,0.12);border-radius:12px;padding:1rem;text-align:center;cursor:pointer;transition:all 0.2s;background:#fff}
+.stylist-card:hover,.stylist-card.selected{border-color:var(--gold);background:#FEFAF3}
+.stylist-avatar{width:52px;height:52px;border-radius:50%;margin:0 auto 0.5rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:600;font-family:'Playfair Display',serif}
+.av-a{background:#E8C06E;color:var(--earth)}.av-b{background:#C4622D;color:#fff}.av-c{background:#4A6741;color:#fff}
+.stylist-name{font-size:0.83rem;font-weight:500;color:var(--earth)}
+.stylist-spec{font-size:0.72rem;color:rgba(61,43,31,0.55);margin-top:2px}
+.stylist-rating{font-size:0.72rem;color:var(--gold-dark);margin-top:4px}
+.submit-btn{width:100%;background:var(--earth);color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;padding:14px;border:none;border-radius:8px;cursor:pointer;margin-top:1.5rem}
+.submit-btn:hover{background:#2A1E15}
+.success-box{display:none;background:#fff;border:1px solid rgba(74,103,65,0.3);border-radius:12px;padding:1.5rem;text-align:center;margin-top:1rem}
+.success-box.show{display:block}
+.success-icon{width:48px;height:48px;background:rgba(74,103,65,0.1);border-radius:50%;margin:0 auto 0.8rem;display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:1.3rem}
+.success-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--earth);margin-bottom:0.3rem}
+.success-sub{font-size:0.82rem;color:rgba(61,43,31,0.6);line-height:1.6}
+.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.testi-card{background:#fff;border:0.5px solid rgba(61,43,31,0.1);border-radius:12px;padding:1.2rem}
+.testi-stars{color:var(--gold);font-size:0.75rem;margin-bottom:0.5rem}
+.testi-text{font-size:0.82rem;color:rgba(61,43,31,0.7);line-height:1.6;margin-bottom:0.8rem;font-style:italic}
+.testi-name{font-size:0.78rem;font-weight:500;color:var(--earth)}
+.testi-city{font-size:0.7rem;color:rgba(61,43,31,0.45)}
+footer{background:var(--earth);padding:2rem;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1.3rem;margin-bottom:0.5rem}
+.footer-info{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.8}
+.footer-info strong{color:rgba(255,255,255,0.8)}
+
+@media (max-width:900px) {
+  nav{padding:1rem 1.5rem}
+  .logo{font-size:1.2rem}
+  .hero{min-height:auto}
+  .hero-content{padding:2rem 1.5rem}
+  .hero h1{font-size:2.2rem;max-width:100%}
+  .hero p{max-width:100%}
+  .hero-btns{justify-content:center}
+  section{padding:2.5rem 1.5rem}
+  .services-grid{grid-template-columns:repeat(2,minmax(140px,1fr))}
+  .form-row{grid-template-columns:1fr}
+  .time-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stylists{grid-template-columns:1fr 1fr}
+  .testimonials{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width:600px) {
+  nav{flex-direction:column;align-items:flex-start;gap:1rem}
+  .nav-links{flex-wrap:wrap;justify-content:flex-start;gap:0.8rem}
+  .hero{padding-bottom:2rem}
+  .hero-content{padding:1.5rem 1rem}
+  .hero h1{font-size:1.9rem}
+  .hero p{font-size:0.88rem;line-height:1.6}
+  .hero-btns{flex-direction:column;gap:0.8rem;width:100%}
+  .btn-primary,.btn-outline{width:100%;padding:12px 18px}
+  .section-title,.section-sub{text-align:left}
+  .services-grid{grid-template-columns:1fr}
+  .service-card{padding:1rem}
+  .booking-section{padding:2rem 1rem}
+  .form-group input,.form-group select{padding:10px 12px}
+  .time-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stylists{grid-template-columns:1fr}
+  .footer{padding:1.5rem}
+  .footer-info{font-size:0.72rem}
+}
+</style>
+</head>
+<body>
+<div class="kente-border"></div>
+<div class="hero">
+  <div class="hero-pattern"></div>
+  <nav>
+    <div class="logo">Raízes & Arte<span>Salão de Tranças · Maputo</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Serviços</a></li>
+      <li><a href="#booking">Marcação</a></li>
+      <li><a href="#about">Equipa</a></li>
+    </ul>
+  </nav>
+  <div class="hero-content">
+    <div class="hero-badge">Tradição · Beleza · Identidade</div>
+    <h1>A arte das tranças,<br>na tua <em>essência africana</em></h1>
+    <p>Especialistas em tranças afro, box braids, cornrows e penteados tradicionais moçambicanos. Porque o teu cabelo conta a tua história.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Marcar Agora</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Ver Serviços</button>
+    </div>
+  </div>
+</div>
+<div class="kente-border" style="transform:scaleX(-1)"></div>
+
+<section id="services">
+  <div style="text-align:center;margin-bottom:2rem">
+    <div class="section-label">O que oferecemos</div>
+    <div class="section-title">Os nossos serviços</div>
+    <div class="section-sub">Selecciona o serviço para a tua marcação</div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" onclick="selectService(this,'Box Braids','De 450 MT')">
+      <div class="service-icon">🪢</div>
+      <div class="service-name">Box Braids</div>
+      <div class="service-price">A partir de 450 MT</div>
+      <div class="service-time">3–5 horas</div>
+    </div>
+    <div class="service-card" onclick="selectService(this,'Cornrows','De 200 MT')">
+      <div class="service-icon">〰️</div>
+      <div class="service-name">Cornrows</div>
+      <div class="service-price">A partir de 200 MT</div>
+      <div class="service-time">1–2 horas</div>
+    </div>
+    <div class="service-card" onclick="selectService(this,'Tranças Senegalesas','De 600 MT')">
+      <div class="service-icon">✦</div>
+      <div class="service-name">Tranças Senegalesas</div>
+      <div class="service-price">A partir de 600 MT</div>
+      <div class="service-time">4–6 horas</div>
+    </div>
+    <div class="service-card" onclick="selectService(this,'Twist Passion','De 350 MT')">
+      <div class="service-icon">🌀</div>
+      <div class="service-name">Twist Passion</div>
+      <div class="service-price">A partir de 350 MT</div>
+      <div class="service-time">2–4 horas</div>
+    </div>
+    <div class="service-card" onclick="selectService(this,'Knotless Braids','De 500 MT')">
+      <div class="service-icon">◈</div>
+      <div class="service-name">Knotless Braids</div>
+      <div class="service-price">A partir de 500 MT</div>
+      <div class="service-time">4–5 horas</div>
+    </div>
+    <div class="service-card" onclick="selectService(this,'Faux Locs','De 700 MT')">
+      <div class="service-icon">🌿</div>
+      <div class="service-name">Faux Locs</div>
+      <div class="service-price">A partir de 700 MT</div>
+      <div class="service-time">5–7 horas</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="booking-section" id="booking">
+  <div style="max-width:600px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="section-label">Reserve o seu lugar</div>
+      <div class="section-title">Marcação</div>
+      <div class="section-sub" id="selected-service-label">Escolhe um serviço acima para começar</div>
+      <div class="accent-line"></div>
+    </div>
+    <div style="margin-bottom:1.5rem">
+      <div class="form-group" style="margin-bottom:0.4rem"><label>Escolhe a tua cabeleireira</label></div>
+      <div class="stylists">
+        <div class="stylist-card" onclick="selectStylist(this,'Beatriz M.')">
+          <div class="stylist-avatar av-a">B</div>
+          <div class="stylist-name">Beatriz M.</div>
+          <div class="stylist-spec">Box Braids · Cornrows</div>
+          <div class="stylist-rating">★★★★★ 4.9</div>
+        </div>
+        <div class="stylist-card" onclick="selectStylist(this,'Fátima N.')">
+          <div class="stylist-avatar av-b">F</div>
+          <div class="stylist-name">Fátima N.</div>
+          <div class="stylist-spec">Senegalesas · Locs</div>
+          <div class="stylist-rating">★★★★★ 5.0</div>
+        </div>
+        <div class="stylist-card" onclick="selectStylist(this,'Graça T.')">
+          <div class="stylist-avatar av-c">G</div>
+          <div class="stylist-name">Graça T.</div>
+          <div class="stylist-spec">Twist · Knotless</div>
+          <div class="stylist-rating">★★★★☆ 4.8</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="name" placeholder="Ex: Ana Mafalda Silva">
+      </div>
+      <div class="form-group">
+        <label>Telemóvel</label>
+        <input type="tel" id="phone" placeholder="+258 84 000 0000">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" id="date">
+      </div>
+      <div class="form-group">
+        <label>Comprimento do cabelo</label>
+        <select id="length">
+          <option value="">Selecciona...</option>
+          <option>Curto (até ombros)</option>
+          <option>Médio (até meio costas)</option>
+          <option>Longo (abaixo das costas)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom:1rem">
+      <label>Horário disponível</label>
+      <div class="time-grid">
+        <div class="time-slot" onclick="selectTime(this)">8h00</div>
+        <div class="time-slot" onclick="selectTime(this)">9h00</div>
+        <div class="time-slot taken">10h00</div>
+        <div class="time-slot" onclick="selectTime(this)">11h00</div>
+        <div class="time-slot taken">12h00</div>
+        <div class="time-slot" onclick="selectTime(this)">13h00</div>
+        <div class="time-slot" onclick="selectTime(this)">14h00</div>
+        <div class="time-slot taken">15h00</div>
+        <div class="time-slot" onclick="selectTime(this)">16h00</div>
+        <div class="time-slot" onclick="selectTime(this)">17h00</div>
+        <div class="time-slot taken">18h00</div>
+        <div class="time-slot" onclick="selectTime(this)">19h00</div>
+      </div>
+    </div>
+    <button class="submit-btn" onclick="submitBooking()">Confirmar Marcação</button>
+    <div class="success-box" id="success">
+      <div class="success-icon">✓</div>
+      <div class="success-title">Marcação confirmada!</div>
+      <div class="success-sub" id="success-msg"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="background:var(--warm-white)" id="about">
+  <div style="text-align:center;margin-bottom:2rem">
+    <div class="section-label">O que dizem as nossas clientes</div>
+    <div class="section-title">Amor que fica</div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="testimonials">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Fiz box braids com a Beatriz e ficaram simplesmente perfeitas. Muito profissional e o ambiente é muito acolhedor."</div>
+      <div class="testi-name">Sónia Cossa</div>
+      <div class="testi-city">Maputo, Sommerschield</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"As tranças senegalesas da Fátima são obra de arte. Nunca tinha ficado tão satisfeita num salão de Maputo."</div>
+      <div class="testi-name">Inês Machava</div>
+      <div class="testi-city">Maputo, Polana</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Lugar clean, cabeleireiras talentosas e os preços são justos. Já sou cliente fiel há dois anos."</div>
+      <div class="testi-name">Luísa Bila</div>
+      <div class="testi-city">Matola, Machava</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Raízes & Arte</div>
+  <div class="footer-info">
+    <strong>Av. Kim Il Sung, nº 247, Maputo</strong><br>
+    Segunda a Sábado · 8h00 – 20h00<br>
+    +258 84 555 0000 · raizesarte@gmail.com<br><br>
+    <span style="opacity:0.4;font-size:0.7rem">© 2026 Raízes & Arte · Maputo, Moçambique</span>
+  </div>
+</footer>
+
+<script>
+let selectedService='',selectedStylist='',selectedTime='';
+function selectService(el,name,price){
+  document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');selectedService=name;
+  document.getElementById('selected-service-label').textContent=name+' · '+price;
+}
+function selectStylist(el,name){
+  document.querySelectorAll('.stylist-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');selectedStylist=name;
+}
+function selectTime(el){
+  if(el.classList.contains('taken'))return;
+  document.querySelectorAll('.time-slot').forEach(t=>t.classList.remove('selected'));
+  el.classList.add('selected');selectedTime=el.textContent;
+}
+function submitBooking(){
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const date=document.getElementById('date').value;
+  const length=document.getElementById('length').value;
+  if(!name||!phone||!date||!selectedService||!selectedStylist||!selectedTime||!length){
+    alert('Por favor, preenche todos os campos e escolhe um horário.');return;
+  }
+  const d=new Date(date);
+  const formatted=d.toLocaleDateString('pt-MZ',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('success-msg').innerHTML=
+    `<strong>${name}</strong>, a tua marcação está confirmada!<br>
+    <strong>${selectedService}</strong> com <strong>${selectedStylist}</strong><br>
+    ${formatted} às ${selectedTime}<br><br>Vemo-nos em breve, linda! 💛`;
+  document.getElementById('success').classList.add('show');
+  document.getElementById('success').scrollIntoView({behavior:'smooth',block:'center'});
+}
+const today=new Date().toISOString().split('T')[0];
+document.getElementById('date').min=today;
+</script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZURI · Moda Africana · Maputo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0A0A0A;--chalk:#F7F4EE;--rust:#B84A2E;--sand:#D4A96A;
+  --forest:#2C4A3E;--blush:#EDD5C0;--white:#FDFCFA;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--chalk);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:rgba(247,244,238,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(10,10,10,0.08)}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;letter-spacing:0.1em;color:var(--ink)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.78rem;text-decoration:none;color:rgba(10,10,10,0.6);letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--rust)}
+.nav-cart{background:var(--ink);color:var(--chalk);font-size:0.75rem;padding:8px 20px;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:70px}
+.hero-left{background:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;padding:4rem 3rem;position:relative;overflow:hidden}
+.hero-pattern-bg{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0zM20 20h20v20H20z' fill='%23D4A96A' fill-opacity='1'/%3E%3C/svg%3E");background-size:40px}
+.hero-eyebrow{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--sand);margin-bottom:1.5rem;position:relative;z-index:1}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:300;line-height:1.05;color:#fff;position:relative;z-index:1;margin-bottom:1.5rem}
+.hero h1 em{color:var(--sand);font-style:italic}
+.hero-desc{font-size:0.88rem;line-height:1.8;color:rgba(255,255,255,0.55);max-width:320px;position:relative;z-index:1;margin-bottom:2.5rem}
+.btn-hero{display:inline-block;background:var(--rust);color:#fff;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;padding:14px 36px;text-decoration:none;position:relative;z-index:1;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-hero:hover{background:#9A3D24}
+.hero-right{background:var(--blush);display:flex;align-items:center;justify-content:center;padding:3rem;position:relative}
+.hero-img-placeholder{width:100%;max-width:380px;aspect-ratio:3/4;background:var(--sand);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-img-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(184,74,46,0.15) 0,rgba(184,74,46,0.15) 2px,transparent 2px,transparent 20px)}
+.hero-img-inner{text-align:center;position:relative;z-index:1}
+.hero-img-inner .model-emoji{font-size:5rem;display:block;margin-bottom:0.5rem}
+.hero-img-inner span{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--ink);opacity:0.5;letter-spacing:0.1em}
+.hero-tag{position:absolute;bottom:2rem;right:2rem;background:var(--rust);color:#fff;padding:6px 14px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase}
+
+/* STRIP */
+.marquee-strip{background:var(--rust);padding:10px 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;gap:3rem;animation:marquee 20s linear infinite}
+.marquee-inner span{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:#fff}
+.marquee-inner .dot{color:rgba(255,255,255,0.5)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* CATEGORIES */
+.categories{padding:5rem 2.5rem}
+.section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem}
+.section-title-main{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400}
+.see-all{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;color:var(--rust);border-bottom:1px solid var(--rust)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.cat-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3}
+.cat-card-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;transition:transform 0.4s}
+.cat-card:hover .cat-card-bg{transform:scale(1.05)}
+.cat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.7) 0%,transparent 50%);display:flex;align-items:flex-end;padding:1.2rem}
+.cat-info{color:#fff}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;display:block}
+.cat-count{font-size:0.72rem;letter-spacing:0.1em;opacity:0.7;margin-top:2px;display:block}
+.c1{background:#C4855A}.c2{background:#3D5A4E}.c3{background:#8B4A6B}.c4{background:#5A6A3D}
+
+/* PRODUCTS */
+.products{padding:4rem 2.5rem;background:var(--white)}
+.filter-bar{display:flex;gap:0.8rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.filter-btn{background:transparent;border:1px solid rgba(10,10,10,0.2);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;padding:8px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem}
+.product-card{cursor:pointer;position:relative}
+.product-img{aspect-ratio:3/4;background:var(--blush);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:1rem;border-radius:4px}
+.product-img::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,0);transition:background 0.3s}
+.product-card:hover .product-img::after{background:rgba(10,10,10,0.05)}
+.product-badge{position:absolute;top:12px;left:12px;background:var(--rust);color:#fff;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px}
+.product-wishlist{position:absolute;top:12px;right:12px;width:32px;height:32px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:0.9rem;opacity:0;transition:opacity 0.2s;cursor:pointer}
+.product-card:hover .product-wishlist{opacity:1}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:4px}
+.product-origin{font-size:0.72rem;color:rgba(10,10,10,0.45);letter-spacing:0.08em;margin-bottom:6px}
+.product-price{font-size:0.9rem;font-weight:500;color:var(--rust)}
+.product-price .old{text-decoration:line-through;color:rgba(10,10,10,0.3);margin-right:6px;font-weight:400;font-size:0.82rem}
+.add-to-cart{width:100%;margin-top:10px;background:var(--ink);color:var(--chalk);border:none;padding:10px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;display:none}
+.product-card:hover .add-to-cart{display:block}
+.add-to-cart:hover{background:var(--rust)}
+
+/* FEATURE BAND */
+.feature-band{background:var(--forest);padding:5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.feature-band h2{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:1.5rem}
+.feature-band h2 em{color:var(--sand);font-style:italic}
+.feature-band p{font-size:0.88rem;line-height:1.9;color:rgba(255,255,255,0.6);margin-bottom:2rem}
+.btn-light{background:var(--sand);color:var(--ink);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;padding:13px 32px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.feature-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.feature-block{background:rgba(255,255,255,0.06);padding:1.5rem;text-align:center}
+.feature-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--sand);display:block}
+.feature-label{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:4px;display:block}
+
+/* NEWSLETTER */
+.newsletter{padding:5rem 2.5rem;text-align:center;background:var(--chalk)}
+.newsletter h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;margin-bottom:0.5rem}
+.newsletter p{font-size:0.85rem;color:rgba(10,10,10,0.55);margin-bottom:2rem}
+.newsletter-form{display:flex;max-width:440px;margin:0 auto;gap:0}
+.newsletter-form input{flex:1;border:1px solid rgba(10,10,10,0.2);background:#fff;padding:12px 20px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none}
+.newsletter-form input:focus{border-color:var(--rust)}
+.newsletter-form button{background:var(--rust);color:#fff;border:none;padding:12px 28px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem 2.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;margin-bottom:0.8rem}
+.footer-tagline{font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.7}
+.footer-col h4{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.5rem}
+.footer-col ul li a{font-size:0.82rem;color:rgba(255,255,255,0.6);text-decoration:none}
+.footer-col ul li a:hover{color:var(--sand)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.3)}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--ink);color:#fff;padding:12px 20px;font-size:0.82rem;letter-spacing:0.05em;transform:translateY(100px);opacity:0;transition:all 0.3s;z-index:999;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* CART COUNTER */
+.cart-count{background:var(--rust);color:#fff;font-size:0.6rem;padding:1px 5px;border-radius:2px;margin-left:4px;font-weight:500;display:none}
+.cart-count.show{display:inline}
+
+@media (max-width:900px) {
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem;flex-wrap:wrap}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left,.hero-right{padding:2.5rem 1.5rem}
+  .hero h1{font-size:3.8rem}
+  .hero-desc{max-width:100%}
+  .categories{padding:3.5rem 1.5rem}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .products{padding:3.5rem 1.5rem}
+  .products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feature-band{grid-template-columns:1fr;gap:2rem;padding:3.5rem 1.5rem}
+  .newsletter{padding:3.5rem 1.5rem}
+  footer{padding:2.5rem 1.5rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+
+@media (max-width:600px) {
+  nav{flex-direction:column;align-items:flex-start;gap:0.8rem}
+  .nav-brand{font-size:1.4rem}
+  .nav-links{gap:0.75rem}
+  .nav-cart{width:100%;text-align:center}
+  .hero-left,.hero-right{padding:2rem 1rem}
+  .hero h1{font-size:3rem}
+  .hero-desc{font-size:0.88rem}
+  .btn-hero{width:100%;padding:12px 18px}
+  .marquee-strip{padding:8px 1rem}
+  .section-header{flex-direction:column;align-items:flex-start;gap:1rem}
+  .cat-grid{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:1fr}
+  .filter-bar{flex-direction:column;align-items:stretch}
+  .filter-btn{width:100%}
+  .feature-band{padding:2.5rem 1rem}
+  .feature-right{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:1rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:0.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">ZURI</div>
+  <ul class="nav-links">
+    <li><a href="#catalog">Catálogo</a></li>
+    <li><a href="#colecoes">Colecções</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+  </ul>
+  <button class="nav-cart" onclick="openCart()">
+    Carrinho <span class="cart-count" id="cart-count">0</span>
+  </button>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-pattern-bg"></div>
+    <div class="hero-eyebrow">Nova Colecção · Verão 2026</div>
+    <h1>Moda que <em>celebra</em> quem somos</h1>
+    <p class="hero-desc">Peças únicas inspiradas nos tecidos e padrões de África. Cada roupa é uma declaração de identidade — feita para a mulher moderna de Maputo e do mundo.</p>
+    <button class="btn-hero" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Explorar Colecção</button>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="hero-img-inner">
+        <span class="model-emoji"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=600&fit=crop&crop=center" alt="Modelo ZURI" style="width:100%;height:100%;object-fit:cover;"></span>
+        <span>Lookbook · Verão 2026</span>
+      </div>
+    </div>
+    <div class="hero-tag">Novo</div>
+  </div>
+</div>
+
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Envios para todo Moçambique</span><span class="dot">✦</span>
+    <span>Tecidos Genuínos</span><span class="dot">✦</span>
+    <span>Produção Local</span><span class="dot">✦</span>
+    <span>Encomendas Personalizadas</span><span class="dot">✦</span>
+    <span>Envios para todo Moçambique</span><span class="dot">✦</span>
+    <span>Tecidos Genuínos</span><span class="dot">✦</span>
+    <span>Produção Local</span><span class="dot">✦</span>
+    <span>Encomendas Personalizadas</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<div class="categories" id="colecoes">
+  <div class="section-header">
+    <h2 class="section-title-main">Categorias</h2>
+    <a href="#catalog" class="see-all">Ver tudo</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="filterProducts('Vestidos')">
+      <div class="cat-card-bg c1" style="background-image:url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=400&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="cat-card-overlay">
+        <div class="cat-info">
+          <span class="cat-name">Vestidos</span>
+          <span class="cat-count">24 peças</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('Conjuntos')">
+      <div class="cat-card-bg c2" style="background-image:url('https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=300&h=400&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="cat-card-overlay">
+        <div class="cat-info">
+          <span class="cat-name">Conjuntos</span>
+          <span class="cat-count">18 peças</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('Blusas')">
+      <div class="cat-card-bg c3" style="background-image:url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&h=400&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="cat-card-overlay">
+        <div class="cat-info">
+          <span class="cat-name">Blusas</span>
+          <span class="cat-count">31 peças</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card" onclick="filterProducts('Saias')">
+      <div class="cat-card-bg c4" style="background-image:url('https://images.unsplash.com/photo-1583496661160-fb5886a6aaaa?w=300&h=400&fit=crop&crop=center');background-size:cover;background-position:center;"></div>
+      <div class="cat-card-overlay">
+        <div class="cat-info">
+          <span class="cat-name">Saias & Capulanas</span>
+          <span class="cat-count">15 peças</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="products" id="catalog">
+  <div class="section-header">
+    <h2 class="section-title-main">Catálogo</h2>
+    <a href="#" class="see-all" id="showing-count">12 peças</a>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('Todos',this)">Todos</button>
+    <button class="filter-btn" onclick="filterProducts('Vestidos',this)">Vestidos</button>
+    <button class="filter-btn" onclick="filterProducts('Conjuntos',this)">Conjuntos</button>
+    <button class="filter-btn" onclick="filterProducts('Blusas',this)">Blusas</button>
+    <button class="filter-btn" onclick="filterProducts('Saias',this)">Saias</button>
+    <button class="filter-btn" onclick="filterProducts('Promoção',this)">Promoção</button>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</div>
+
+<div class="feature-band" id="sobre">
+  <div>
+    <h2>Feito com <em>alma</em>, para durar</h2>
+    <p>A ZURI nasceu em Maputo com uma missão clara: criar moda que honre a herança africana sem abrir mão do estilo contemporâneo. Cada peça é produzida localmente, com artesãs moçambicanas e tecidos cuidadosamente selecionados.</p>
+    <button class="btn-light">A nossa história</button>
+  </div>
+  <div class="feature-right">
+    <div class="feature-block">
+      <span class="feature-num">340+</span>
+      <span class="feature-label">Clientes felizes</span>
+    </div>
+    <div class="feature-block">
+      <span class="feature-num">100%</span>
+      <span class="feature-label">Produção local</span>
+    </div>
+    <div class="feature-block">
+      <span class="feature-num">12</span>
+      <span class="feature-label">Artesãs parceiras</span>
+    </div>
+    <div class="feature-block">
+      <span class="feature-num">3</span>
+      <span class="feature-label">Anos em Maputo</span>
+    </div>
+  </div>
+</div>
+
+<div class="newsletter">
+  <h3>Fique por dentro das novidades</h3>
+  <p>Receba em primeira mão as novas colecções, promoções e eventos da ZURI.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="O seu endereço de e-mail">
+    <button onclick="subscribeNewsletter()">Subscrever</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">ZURI</div>
+      <p class="footer-tagline">Moda africana contemporânea,<br>nascida em Maputo.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Comprar</h4>
+      <ul>
+        <li><a href="#">Novidades</a></li>
+        <li><a href="#">Vestidos</a></li>
+        <li><a href="#">Conjuntos</a></li>
+        <li><a href="#">Promoções</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="#">Entregas</a></li>
+        <li><a href="#">Devoluções</a></li>
+        <li><a href="#">Tamanhos</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">+258 82 333 0000</a></li>
+        <li><a href="#">zuri.moda@gmail.com</a></li>
+        <li><a href="#">Av. 24 de Julho, Maputo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 ZURI · Maputo, Moçambique. Todos os direitos reservados.</span>
+    <span class="footer-copy">Instagram · Facebook · WhatsApp</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products=[
+  {id:1,name:'Vestido Ankara Flor',cat:'Vestidos',origin:'Inspirado em Maputo',price:1200,oldPrice:null,badge:'Novo',img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=400&fit=crop&crop=center',bg:'#C4855A'},
+  {id:2,name:'Conjunto Kanga Premium',cat:'Conjuntos',origin:'Tecido de Zanzibar',price:1800,oldPrice:2200,badge:'-18%',img:'https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=300&h=400&fit=crop&crop=center',bg:'#3D5A4E'},
+  {id:3,name:'Blusa Chitenge Moderna',cat:'Blusas',origin:'Artesanal · Maputo',price:650,oldPrice:null,badge:null,img:'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&h=400&fit=crop&crop=center',bg:'#8B4A6B'},
+  {id:4,name:'Saia Capulana Longa',cat:'Saias',origin:'Tecido Moçambicano',price:850,oldPrice:null,badge:'Bestseller',img:'https://images.unsplash.com/photo-1583496661160-fb5886a6aaaa?w=300&h=400&fit=crop&crop=center',bg:'#5A6A3D'},
+  {id:5,name:'Vestido Wax Print',cat:'Vestidos',origin:'Inspirado em Accra',price:1400,oldPrice:1700,badge:'-17%',img:'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=300&h=400&fit=crop&crop=center',bg:'#7A4A30'},
+  {id:6,name:'Top Cropped Ankara',cat:'Blusas',origin:'Artesanal · Maputo',price:450,oldPrice:null,badge:'Promoção',img:'https://images.unsplash.com/photo-1506629905607-0b5b8b5b2b2b?w=300&h=400&fit=crop&crop=center',bg:'#6B3D5A'},
+  {id:7,name:'Conjunto Linho Moderno',cat:'Conjuntos',origin:'Design Moçambicano',price:2100,oldPrice:null,badge:'Novo',img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=300&h=400&fit=crop&crop=center',bg:'#2C4A3E'},
+  {id:8,name:'Saia Midi Chitenge',cat:'Saias',origin:'Artesanal · Nampula',price:750,oldPrice:900,badge:'Promoção',img:'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=300&h=400&fit=crop&crop=center',bg:'#4A5A3D'},
+  {id:9,name:'Vestido Maxi Tribal',cat:'Vestidos',origin:'Inspirado em Inhambane',price:1600,oldPrice:null,badge:null,img:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=400&fit=crop&crop=center',bg:'#8B5A30'},
+  {id:10,name:'Blusa Off-Shoulder Wax',cat:'Blusas',origin:'Design Original ZURI',price:550,oldPrice:null,badge:'Novo',img:'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=400&fit=crop&crop=center',bg:'#5A3D6B'},
+  {id:11,name:'Conjunto Cerimónia',cat:'Conjuntos',origin:'Tecidos Premium',price:3200,oldPrice:null,badge:'Exclusivo',img:'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=300&h=400&fit=crop&crop=center',bg:'#3D2C4A'},
+  {id:12,name:'Vestido Ankara Festa',cat:'Vestidos',origin:'Colecção Especial',price:1900,oldPrice:2400,badge:'-20%',img:'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=300&h=400&fit=crop&crop=center',bg:'#6B4A30'},
+];
+let cartCount=0;
+let currentFilter='Todos';
+
+function renderProducts(filter){
+  const grid=document.getElementById('products-grid');
+  const filtered=filter==='Todos'?products:filter==='Promoção'?products.filter(p=>p.oldPrice):products.filter(p=>p.cat===filter);
+  document.getElementById('showing-count').textContent=filtered.length+' peças';
+  grid.innerHTML=filtered.map(p=>`
+    <div class="product-card">
+      <div class="product-img" style="background:${p.bg}">
+        <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
+        ${p.badge?`<div class="product-badge">${p.badge}</div>`:''}
+        <div class="product-wishlist" onclick="event.stopPropagation();addWishlist('${p.name}')">♡</div>
+      </div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-origin">${p.origin}</div>
+      <div class="product-price">
+        ${p.oldPrice?`<span class="old">${p.oldPrice.toLocaleString('pt')} MT</span>`:''}
+        ${p.price.toLocaleString('pt')} MT
+      </div>
+      <button class="add-to-cart" onclick="addToCart('${p.name}')">Adicionar ao carrinho</button>
+    </div>
+  `).join('');
+}
+
+function filterProducts(cat,btn){
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  renderProducts(cat);
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+}
+
+function addToCart(name){
+  cartCount++;
+  const el=document.getElementById('cart-count');
+  el.textContent=cartCount;el.classList.add('show');
+  showToast(`"${name}" adicionado ao carrinho`);
+}
+function addWishlist(name){showToast(`"${name}" guardado na wishlist ♡`);}
+function openCart(){showToast(`Tens ${cartCount} peça${cartCount!==1?'s':''} no carrinho.`);}
+function subscribeNewsletter(){showToast('Obrigada! Fique atenta à sua caixa de entrada.');}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+renderProducts('Todos');
+</script>
+</body>
+</html>
